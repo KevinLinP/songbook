@@ -1,11 +1,11 @@
 export default [
   {
     path: '/',
-    name: 'home',
-    component: '/client/ui/Home.vue'
+    name: 'list',
+    component: '/client/ui/TheList.vue'
   },
   {
     path: '*',
-    component: '/client/ui/Home.vue'
+    component: '/client/ui/NotFound.vue'
   }
 ];
