@@ -4,7 +4,7 @@
       li(v-for='item in listItems') {{ item.text }}
 
     form(@submit='createListItem')
-      input(type='text' v-model='text')
+      input.mr-3(type='text' v-model='text')
       button(type="submit") create
 </template>
 
