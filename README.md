@@ -1,3 +1,5 @@
+Edit `package.json`
+
 ```
 meteor create --bare <directoryName>
 meteor npm install --save vue
