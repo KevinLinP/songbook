@@ -7,3 +7,5 @@ meteor add akryum:vue-sass vue-pug
 meteor add aldeed:collection2@3.0.0
 meteor npm install --save simpl-schema
 ```
+
+follow https://github.com/NitroBAY/meteor-service-worker
