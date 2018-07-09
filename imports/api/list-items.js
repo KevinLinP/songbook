@@ -9,8 +9,14 @@ ListItems.schema = new SimpleSchema({
     return new Date();
   }}
 });
-
 ListItems.attachSchema(ListItems.schema);
+
+Meteor.methods({
+  'listitems.insert'({ text }) {
+    ListItems.insert({text}, (error, result) => {
+    });
+  }
+});
 
 if (Meteor.isServer) {
   Meteor.publish('listitems', function () {
