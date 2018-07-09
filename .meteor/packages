@@ -22,3 +22,5 @@ akryum:vue-router2
 akryum:vue-pug
 akryum:vue-sass
 aldeed:collection2@3.0.0
+accounts-base
+accounts-password

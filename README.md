@@ -9,3 +9,8 @@ meteor npm install --save simpl-schema
 ```
 
 follow https://github.com/NitroBAY/meteor-service-worker
+
+```
+meteor add accounts-base
+meteor add accounts-password
+```
