@@ -4,6 +4,8 @@ import Vue from 'vue';
 import {RouterFactory, nativeScrollBehavior} from 'meteor/akryum:vue-router2';
 import VueMeteorTracker from 'vue-meteor-tracker';
 
+import '/imports/startup/both';
+
 // App layout
 import AppLayout from '/client/ui/AppLayout.vue';
 

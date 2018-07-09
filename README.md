@@ -10,7 +10,13 @@ meteor npm install --save simpl-schema
 
 follow https://github.com/NitroBAY/meteor-service-worker
 
+
+# For accounts
 ```
 meteor add accounts-base
 meteor add accounts-password
+meteor npm install --save bcrypt
+
+meteor shell
+Accounts.createUser(options, [callback])
 ```
