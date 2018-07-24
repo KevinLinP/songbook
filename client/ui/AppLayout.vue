@@ -1,8 +1,6 @@
-<template>
-  <div class="app-layout">
-    <!-- Route content -->
-    <router-view></router-view>
-  </div>
+<template lang="pug">
+  .app-layout
+    router-view
 </template>
 
 <script>
