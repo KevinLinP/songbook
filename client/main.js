@@ -1,8 +1,12 @@
 // Libs
 import {Meteor} from 'meteor/meteor';
 import Vue from 'vue';
-import {RouterFactory, nativeScrollBehavior} from 'meteor/akryum:vue-router2';
+import VueRouter from 'vue-router';
 import VueMeteorTracker from 'vue-meteor-tracker';
+
+import ListPage from '/client/ui/ListPage.vue'
+import LoginPage from '/client/ui/LoginPage.vue';
+import NotFoundPage from '/client/ui/NotFoundPage.vue';
 
 import '/imports/startup/both';
 
@@ -11,12 +15,17 @@ import AppLayout from '/client/ui/AppLayout.vue';
 
 // App start
 Meteor.startup(() => {
-  const router = new RouterFactory({
-    mode: 'history',
-    scrollBehavior: nativeScrollBehavior,
-  }).create();
-
+  Vue.use(VueRouter);
   Vue.use(VueMeteorTracker);
+
+  const router = new VueRouter({
+    mode: 'history',
+    routes: [
+      {path: '/login', component: LoginPage},
+      {path: '', component: ListPage},
+      {path: '*', component: NotFoundPage}
+    ]
+  });
 
   new Vue({
     router,

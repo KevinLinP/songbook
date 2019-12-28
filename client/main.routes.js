@@ -2,7 +2,7 @@ export default [
   {
     path: '/',
     name: 'list',
-    component: '/client/ui/TheList.vue'
+    component: '/client/ui/ListPage.vue'
   },
   {
     path: '/login',
