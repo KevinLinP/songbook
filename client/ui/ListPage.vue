@@ -1,9 +1,12 @@
 <template lang="pug">
   div
     ul
-      li(v-for='item in listItems') {{ item.text }}
+      li(v-for='item in listItems')
+        button(@click.prevent="remove(item)") delete
+        |
+        | {{ item.text }}
 
-    form(@submit='createListItem')
+    form(@submit.prevent='create')
       input.mr-3(type='text' v-model='text')
       button(type="submit") create
 </template>
@@ -27,11 +30,13 @@
       }
     },
     methods: {
-      createListItem: function(evt) {
-        evt.preventDefault();
-        Meteor.call('listitems.insert', {
+      create() {
+        ListItems.insert({
           text: this.text
         });
+      },
+      remove(item) {
+        ListItems.remove(item._id)
       }
     }
   }

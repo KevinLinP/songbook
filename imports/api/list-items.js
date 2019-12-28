@@ -11,12 +11,28 @@ ListItems.schema = new SimpleSchema({
 });
 ListItems.attachSchema(ListItems.schema);
 
-Meteor.methods({
-  'listitems.insert'({ text }) {
-    ListItems.insert({text}, (error, result) => {
-    });
+ListItems.allow({
+  insert(userId, doc) {
+    return true;
+  },
+  update(userId, doc, fields, modifier) {
+    return true;
+  },
+  remove(userId, doc) {
+    return true;
   }
 });
+
+//Meteor.methods({
+  //'listitems.insert'({ text }) {
+    //ListItems.insert({text}, (error, result) => {
+    //});
+  //}
+
+  //'listitems.remove'(id) {
+    //ListItems.remove(id)
+  //}
+//});
 
 if (Meteor.isServer) {
   Meteor.publish('listitems', function () {
