@@ -11,9 +11,7 @@
     "meteor-node-stubs": "^0.4.1",
     "simpl-schema": "^1.7.3",
     "svelte": "^3.23.2",
-    "vue": "^2.6.11",
-    "vue-meteor-tracker": "^1.0.3",
-    "vue-router": "^3.3.2"
+    "svelte-router-spa": "^5.6.0"
   },
   "devDependencies": {}
 }

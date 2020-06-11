@@ -1,49 +1,8 @@
 <script>
-  import { Meteor } from "meteor/meteor";
-  import { useTracker } from 'meteor/rdb:svelte-meteor-data';
-  import { Tasks } from '../api/tasks.js'
-  import { onMount } from 'svelte';
-
-  import Task from './Task.svelte';
-
-  onMount(async () => {
-    Meteor.subscribe('tasks');
-  });
-
-  let newTask = "";
-
-  function handleSubmit() {
-    Tasks.insert({
-      text: newTask,
-      // createdAt: new Date()
-    })
-
-    newTask = "";
-  }
-  
-  $: tasks = useTracker(() => Tasks.find({}, {sort: {createdAt: -1}}).fetch());
+  import { Router as RouterImport } from 'svelte-router-spa'
+  // HACK: https://github.com/jorgegorka/svelte-router/issues/15
+  const Router = RouterImport.default
+  import { routes } from '/imports/startup/client/routes.js'
 </script>
  
- 
-<div class="container">
-  <header>
-    <h1>Todo List</h1>
-
-    <form class="new-task" on:submit|preventDefault={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Type to add new tasks"
-        bind:value={newTask}
-      />
-    </form>
-  </header>
-
-  <ul>
-  {#each $tasks as task}
-    <Task
-      key={task._id}
-      task={task}
-    />
-  {/each}
-  </ul>
-</div>
+<Router {routes} />

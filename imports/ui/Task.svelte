@@ -27,5 +27,5 @@
     on:click={toggleChecked}
   />
  
-  <span class="text">{ task.text } { task.createdAt }</span>
+  <span class="text">{ task.text }</span>
 </li>
