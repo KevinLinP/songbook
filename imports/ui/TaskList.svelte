@@ -28,25 +28,24 @@
 </script>
  
  
-<div class="container">
-  <header>
-    <h1>Todo List</h1>
+<header class="my-5">
+  <h1>Todo List</h1>
 
-    <form class="new-task" on:submit|preventDefault={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Type to add new tasks"
-        bind:value={newTask}
-      />
-    </form>
-  </header>
-
-  <ul>
-  {#each $tasks as task}
-    <Task
-      key={task._id}
-      task={task}
+  <form class="new-task" on:submit|preventDefault={handleSubmit}>
+    <input
+      type="text"
+      placeholder="Type to add new tasks"
+      bind:value={newTask}
+      class="form-control"
     />
-  {/each}
-  </ul>
-</div>
+  </form>
+</header>
+
+<ul class="list-unstyled">
+{#each $tasks as task}
+  <Task
+    key={task._id}
+    task={task}
+  />
+{/each}
+</ul>

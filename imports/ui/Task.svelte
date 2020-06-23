@@ -15,17 +15,18 @@
 </script>
  
 
-<li class:checked="{task.checked}">
-  <button class="delete" on:click={deleteTask}>
-    ×
-  </button>
+<li class:checked="{task.checked}" class="mb-4 form-check">
+  <label class="form-check-label">{ task.text }</label>
  
   <input
     type="checkbox"
     readonly
     checked={!!task.checked}    
     on:click={toggleChecked}
+    class="form-check-input"
   />
- 
-  <span class="text">{ task.text }</span>
+
+  <button class="btn btn-light btn-sm" on:click={deleteTask}>
+    ×
+  </button>
 </li>
