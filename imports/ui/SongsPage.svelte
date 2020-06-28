@@ -29,7 +29,7 @@
   $: song = useTracker(() => Songs.findOne(currentSongId))
 </script>
 
-<div class="mt-5">
+<div class="my-3">
   <SongSelect {songs}/>
 </div>
 
