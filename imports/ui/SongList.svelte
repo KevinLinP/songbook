@@ -31,7 +31,10 @@
   let selectedValue = undefined;
 
   $: songs = useTracker(() => Songs.find({}, {sort: {title: 1}}).fetch())
-  $: console.log('ss', selectedValue)
+
+  const MarkdownIt = require('markdown-it')
+  const md = new MarkdownIt()
+  $: mainContentHtml = selectedValue ? md.render(selectedValue.mainContentMarkdown) : null
 </script>
 
 <div class="mt-5">
@@ -47,6 +50,6 @@
   </h1>
 </header>
 
-{#if selectedValue}
-  { selectedValue.mainContentMarkdown }
+{#if mainContentHtml }
+  <div>{@html mainContentHtml }</div>
 {/if}
