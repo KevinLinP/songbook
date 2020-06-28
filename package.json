@@ -1,5 +1,5 @@
 {
-  "name": "meteor-vue-seed",
+  "name": "songbook",
   "private": true,
   "scripts": {
     "start": "meteor run"

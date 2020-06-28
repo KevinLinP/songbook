@@ -1,9 +1,9 @@
-import TaskList from '/imports/ui/TaskList.svelte'
+import SongList from '/imports/ui/SongList.svelte'
  
 const routes = [
   {
     name: '/',
-    component: TaskList,
+    component: SongList,
   },
 ]
  
