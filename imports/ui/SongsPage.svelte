@@ -21,25 +21,31 @@
   let song
 
   onMount(async () => {
-    Meteor.subscribe('songs')
+    const lastUpdatedAt = localStorage.getItem('songsLastUpdatedAt') || new Date('2020-01-01')
+    Meteor.subscribe('songs', lastUpdatedAt, () => {
+      const lastSong = Songs.findOne({}, {sort: {updatedAt: -1}})
+      localStorage.setItem('songsLastUpdatedAt', lastSong.updatedAt);
+    })
   })
 
   $: songs = useTracker(() => Songs.find({}, {sort: {title: 1}}).fetch())
-  $: currentSongId = new Mongo.ObjectID(currentRoute.namedParams.id)
-  $: song = useTracker(() => Songs.findOne(currentSongId))
+  $: currentSongId = currentRoute.namedParams.id
+  $: song = useTracker(() => Songs.findOne(new Mongo.ObjectID(currentSongId)))
 </script>
 
 <div class="my-3">
   <SongSelect {songs}/>
 </div>
 
-{#if $song}
-  <Song song={$song}/>
+{#if currentSongId}
+  {#if $song}
+    <Song song={$song}/>
+  {/if}
 {:else}
   <header class="mt-4 mb-4">
     <h1 class="display-5">Hash House Harriers Songbook</h1>
   </header>
 
   <p class="mb-5">Search to begin.</p>
-  <!-- <p class="text-muted">Add this page to your homescreen and your phone will try to remember the songs for a few days.</p> -->
+  <p class="text-muted">Add this page to your homescreen and your phone will try to remember the songs for a few days.</p>
 {/if}

@@ -32,7 +32,8 @@ export const Songs = new Mongo.Collection('songs');
 // });
 
 if (Meteor.isServer) {
-  Meteor.publish('songs', function () {
-    return Songs.find();
+  Songs._ensureIndex({updatedAt: -1});
+  Meteor.publish('songs', function (afterUpdatedAt) {
+    return Songs.find({updatedAt: {'$gt': afterUpdatedAt}});
   });
 }
