@@ -22,3 +22,4 @@ accounts-base@1.6.0
 accounts-password@1.6.0
 svelte:compiler
 rdb:svelte-meteor-data
+ground:db

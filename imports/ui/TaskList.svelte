@@ -1,19 +1,23 @@
 <script>
-  import { Meteor } from "meteor/meteor";
-  import { useTracker } from 'meteor/rdb:svelte-meteor-data';
-  import { Tasks } from '../api/tasks.js'
-  import { onMount } from 'svelte';
+  import { Meteor } from "meteor/meteor"
+  import { useTracker } from 'meteor/rdb:svelte-meteor-data'
+  import { Tasks as TasksUncached } from '../api/tasks.js'
+  import { onMount } from 'svelte'
+  import { Ground } from 'meteor/ground:db'
 
-  import Task from './Task.svelte';
+  import Task from './Task.svelte'
 
-  export let currentRoute;
-  export let params;
+  export let currentRoute
+  export let params
+
+  const Tasks = new Ground.Collection('tasks')
+  Tasks.observeSource(TasksUncached.find())
 
   onMount(async () => {
-    Meteor.subscribe('tasks');
-  });
+    Meteor.subscribe('tasks')
+  })
 
-  let newTask = "";
+  let newTask = ""
 
   function handleSubmit() {
     Tasks.insert({
@@ -21,10 +25,10 @@
       // createdAt: new Date()
     })
 
-    newTask = "";
+    newTask = ""
   }
   
-  $: tasks = useTracker(() => Tasks.find({}, {sort: {createdAt: -1}}).fetch());
+  $: tasks = useTracker(() => Tasks.find({}, {sort: {createdAt: -1}}).fetch())
 </script>
  
  
