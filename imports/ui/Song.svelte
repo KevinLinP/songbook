@@ -11,13 +11,13 @@
 <header class="mt-4 mb-4">
   <h1 class="display-4">{ song.title }</h1>
   {#if song.tune}
-    <p class="text-muted" style="font-size: 0.9rem;">tune: {song.tune}</p>
+    <p class="text-muted">tune: {song.tune}</p>
   {/if}
 </header>
 
-<div>{@html mainContentHtml}</div>
+<div style="font-size: 1.3rem;">{@html mainContentHtml}</div>
 
-<div class="mt-4 mb-3" style="font-size: 0.8rem;">
+<div class="mt-4 mb-5">
   <p class="text-muted">
     source:
     <a href={song.url} target="_blank" class="text-decoration-none text-muted">

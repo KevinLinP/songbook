@@ -10,6 +10,7 @@
     optionIdentifier: '_id',
     getOptionLabel: (option, filterText) => option.title,
     getSelectionLabel: (option) => option.title,
+    inputStyles: 'font-size: 1rem;',
   }
 
   let selectedValue = null;
