@@ -1,10 +1,18 @@
-import SongList from '/imports/ui/SongList.svelte'
+import SongsPage from '/imports/ui/SongsPage.svelte'
  
 const routes = [
   {
     name: '/',
-    component: SongList,
+    component: SongsPage,
   },
+  {
+    name: '/s/:id',
+    component: SongsPage,
+  },
+  // { # 😡
+  //   name: '/:id',
+  //   component: SongsPage,
+  // },
 ]
  
 export { routes }
