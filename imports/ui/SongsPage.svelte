@@ -17,21 +17,22 @@
   // TODO: move Songs into own file
   const Songs = new Ground.Collection('songs')
   Songs.observeSource(SongsUncached.find())
-  let lastUpdatedAt = localStorage.getItem('songsLastUpdatedAt') || new Date('1900-01-01')
+  let lastUpdatedAt = localStorage.getItem('songsLastUpdatedAt') || new Date('2020-01-01')
 
   let song
 
   onMount(async () => {
-    Meteor.subscribe('songs', lastUpdatedAt)
+    Meteor.subscribe('songs', lastUpdatedAt, () => {
+      Tracker.autorun(() => {
+        lastSong = Songs.findOne({}, {sort: {updatedAt: -1}, fields: {updatedAt: 1}})
+        if (lastSong && (lastSong.updatedAt > lastUpdatedAt)) {
+          localStorage.setItem('songsLastUpdatedAt', lastSong.updatedAt)
+          lastUpdatedAt = lastSong.updatedAt
+        }
+      })
+    })
   })
 
-  Tracker.autorun(() => {
-    lastSong = Songs.findOne({}, {sort: {updatedAt: -1}, fields: {updatedAt: 1}})
-    if (lastSong && (lastSong.updatedAt > lastUpdatedAt)) {
-      lastUpdatedAt = lastSong.updatedAt
-      localStorage.setItem('songsLastUpdatedAt', lastUpdatedAt)
-    }
-  })
 
   $: songs = useTracker(() => Songs.find({}, {sort: {title: 1}}).fetch())
   $: currentSongId = currentRoute.namedParams.id
