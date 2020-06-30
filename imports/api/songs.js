@@ -32,8 +32,15 @@ export const Songs = new Mongo.Collection('songs');
 // });
 
 if (Meteor.isServer) {
-  Songs._ensureIndex({updatedAt: -1});
+  Songs._ensureIndex({updatedAt: -1})
   Meteor.publish('songs', function (afterUpdatedAt) {
-    return Songs.find({updatedAt: {'$gt': afterUpdatedAt}});
-  });
+    return Songs.find({updatedAt: {$gt: afterUpdatedAt}}, {sort: {updatedAt: -1}})
+  })
+
+  Meteor.methods({
+    songsCountBeforeOrAt(updatedAt) {
+      // TODO: could sanitize
+      return Songs.find({updatedAt: {$lte: updatedAt}}).count()
+    },
+  })
 }
