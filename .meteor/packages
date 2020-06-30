@@ -23,3 +23,4 @@ accounts-password@1.6.0
 svelte:compiler
 rdb:svelte-meteor-data
 ground:db
+fourseven:scss
