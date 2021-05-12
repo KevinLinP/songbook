@@ -10,7 +10,7 @@
     "bootstrap": "^4.5.0",
     "markdown-it": "^11.0.0",
     "meteor-node-stubs": "^0.4.1",
-    "simpl-schema": "^1.7.3",
+    "simpl-schema": "^1.10.2",
     "svelte": "^3.23.2",
     "svelte-router-spa": "^5.6.0",
     "svelte-select": "^3.8.1"
