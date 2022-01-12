@@ -8,7 +8,7 @@
     "@babel/runtime": "^7.10.2",
     "bcrypt": "^3.0.8",
     "bootstrap": "^4.5.0",
-    "markdown-it": "^11.0.0",
+    "markdown-it": "^12.3.2",
     "meteor-node-stubs": "^0.4.1",
     "simpl-schema": "^1.7.3",
     "svelte": "^3.23.2",
